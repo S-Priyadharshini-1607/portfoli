@@ -31,7 +31,7 @@ const Footer: React.FC = () => {
             className="flex justify-center space-x-6 mb-8"
           >
             <motion.a
-              href="https://github.com/S-PRIYADHARSHINI-AI"
+              href="https://github.com/S-Priyadharshini-1607"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.1, y: -2 }}

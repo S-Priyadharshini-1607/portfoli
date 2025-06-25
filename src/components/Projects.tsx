@@ -81,7 +81,7 @@ const Projects: React.FC = () => {
 
               <div className="flex flex-col sm:flex-row gap-4">
                 <motion.a
-                  href="https://github.com/S-PRIYADHARSHINI-AI/Waste_Management"
+                  href="https://github.com/S-Priyadharshini-1607/AI-Waste-Segregation-System"
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.05 }}
