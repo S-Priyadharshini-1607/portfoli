@@ -1,17 +1,10 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Download, Mail, BookOpen, Globe, Quote } from 'lucide-react';
+import { Download, Mail, BookOpen, Globe, Quote, Sparkles } from 'lucide-react';
 
 const HeroAbout: React.FC = () => {
   const aboutRef = useRef(null);
   const isInView = useInView(aboutRef, { once: true });
-
-  const scrollToContact = () => {
-    const element = document.querySelector('#contact');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
 
   const handleResumeClick = () => {
     const link = document.createElement('a');
@@ -21,137 +14,141 @@ const HeroAbout: React.FC = () => {
     window.open('/resume.pdf', '_blank');
   };
 
+  const scrollToContact = () => {
+    const el = document.querySelector('#contact');
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
-    <section
-      id="home"
-      className="min-h-screen flex flex-col lg:flex-row bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50 overflow-hidden relative"
-    >
-      {/* Left: Hero */}
-      <div className="w-full lg:w-1/2 flex flex-col justify-center items-center text-center px-6 py-12 z-10">
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
+    <section className="min-h-screen flex flex-col lg:flex-row bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50 overflow-hidden relative">
+      {/* HERO LEFT */}
+      <div className="w-full lg:w-1/2 flex flex-col justify-center items-center text-center px-8 py-16 z-10 relative">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-5xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-700 via-pink-500 to-blue-600 drop-shadow-xl"
         >
-          Priyadharshini S
-        </motion.h1>
-
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-xl md:text-2xl text-gray-800 font-light mt-4"
-        >
-          🚀 AI Innovator | 📈 Power BI Analyst | 💻 Full-Stack Developer
-        </motion.p>
-
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-base text-gray-600 mt-6 max-w-lg"
-        >
-          Building intelligent systems and crafting user-focused web apps with data, design, and deep tech synergy.
-        </motion.p>
+          <h1 className="text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-purple-700 via-pink-500 to-blue-600 bg-clip-text text-transparent drop-shadow-lg animate-gradient-x">
+            Priyadharshini S
+          </h1>
+          <p className="mt-4 text-xl md:text-2xl text-gray-800 font-light tracking-wide">
+            🚀 AI Enthusiast | 📈 Data Analyst | 💻 Full-Stack Developer
+          </p>
+          <p className="mt-6 max-w-xl text-base md:text-lg text-gray-700 leading-relaxed">
+            Passionate about leveraging AI & Data Science to build impactful solutions. Skilled in Python, Power BI, and modern web development with a strong commitment to meaningful, real-world innovation.
+          </p>
+        </motion.div>
 
         <motion.div
+          className="flex flex-wrap gap-4 justify-center mt-10"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="flex flex-wrap justify-center items-center gap-4 mt-10"
+          transition={{ duration: 0.9, delay: 0.2 }}
         >
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+          <button
             onClick={handleResumeClick}
-            className="bg-gradient-to-r from-purple-600 to-pink-500 text-white px-6 py-4 rounded-full font-medium flex items-center gap-2 shadow-xl hover:from-purple-700 hover:to-pink-600 transition-all duration-300"
+            className="bg-gradient-to-r from-purple-600 to-pink-500 text-white px-6 py-3 rounded-full font-medium flex items-center gap-2 shadow-lg hover:from-purple-700 hover:to-pink-600 transition duration-300"
           >
-            <Download size={20} />
-            Download Resume
-          </motion.button>
-
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            <Download size={18} /> Resume
+          </button>
+          <button
             onClick={scrollToContact}
-            className="bg-white text-purple-600 px-6 py-4 rounded-full font-medium flex items-center gap-2 shadow-xl border-2 border-purple-600 hover:bg-purple-50 transition-all duration-300"
+            className="bg-white text-purple-600 px-6 py-3 border-2 border-purple-600 rounded-full font-medium flex items-center gap-2 shadow-md hover:bg-purple-50 transition duration-300"
           >
-            <Mail size={20} />
-            Contact Me
-          </motion.button>
+            <Mail size={18} /> Contact
+          </button>
+        </motion.div>
+
+        {/* Sparkles */}
+        <motion.div
+          className="absolute -top-10 left-1/4 w-16 h-16 text-yellow-400 animate-spin-slow"
+          animate={{ rotate: 360 }}
+          transition={{ duration: 12, repeat: Infinity }}
+        >
+          <Sparkles size={40} />
         </motion.div>
       </div>
 
-      {/* Right: About */}
-      <div className="w-full lg:w-1/2 py-20 px-8 bg-white relative flex items-center justify-center">
-        <div className="max-w-xl" ref={aboutRef}>
+      {/* ABOUT RIGHT */}
+      <div className="w-full lg:w-1/2 flex items-center justify-center px-6 py-20 bg-white relative overflow-hidden">
+        <div className="max-w-xl space-y-6" ref={aboutRef}>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7 }}
-            className="mb-10"
           >
-            <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-3">About Me</h2>
-            <p className="text-gray-600 text-base">Creative thinker. Curious learner. Tech-driven builder.</p>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-2">Summary</h2>
+            <p className="text-gray-600 text-base">Tech Explorer. Purpose-Driven Engineer. Creative Problem Solver.</p>
             <div className="w-20 h-1 bg-purple-600 mt-3 rounded" />
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8 }}
-            className="space-y-6 text-gray-700"
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="text-lg text-gray-700 leading-relaxed"
           >
-            <p className="text-lg leading-relaxed">
-              I’m Priyadharshini — a passionate individual committed to solving real-world problems with cutting-edge technologies like AI, ML, and full-stack development. I love crafting clean, functional systems that blend intelligence and design.
-            </p>
+            As a B.Tech (AI & DS) student, I've built powerful web apps, dashboards, and AI systems with real-world impact. From industrial training at Intel Unnati to building an AI Waste Segregation System, my journey is fueled by innovation, design thinking, and data.
+          </motion.p>
 
-            <motion.blockquote
-              initial={{ opacity: 0 }}
-              animate={isInView ? { opacity: 1 } : {}}
-              transition={{ duration: 1, delay: 0.3 }}
-              className="p-5 border-l-4 border-purple-600 bg-gray-50 shadow-inner italic text-purple-800 rounded-md flex gap-3 items-start"
-            >
-              <Quote className="text-purple-400 mt-1" />
-              “Technology should be purposeful — not just powerful.”
-            </motion.blockquote>
+          {/* Highlights */}
+          <motion.ul
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-purple-700 font-medium mt-4"
+          >
+            <li className="bg-purple-50 p-3 rounded-xl shadow-sm hover:shadow-md transition">⚡ GPT & Generative AI Certified</li>
+            <li className="bg-purple-50 p-3 rounded-xl shadow-sm hover:shadow-md transition">📊 Power BI Dashboards & Analytics</li>
+            <li className="bg-purple-50 p-3 rounded-xl shadow-sm hover:shadow-md transition">🤖 ML & Deep Learning Trained</li>
+            <li className="bg-purple-50 p-3 rounded-xl shadow-sm hover:shadow-md transition">🌐 Full-Stack Web Development</li>
+          </motion.ul>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
-              <div className="flex items-start gap-4">
-                <BookOpen className="text-purple-600 mt-1" size={24} />
-                <div>
-                  <h4 className="font-semibold text-gray-900">Education</h4>
-                  <p>AI & Data Science, Arunai Engineering College</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-4">
-                <Globe className="text-purple-600 mt-1" size={24} />
-                <div>
-                  <h4 className="font-semibold text-gray-900">Location</h4>
-                  <p>Tiruvannamalai, Tamil Nadu, India</p>
-                </div>
+          {/* Quote */}
+          <motion.blockquote
+            className="p-5 border-l-4 border-purple-600 bg-gray-50 shadow-inner italic text-purple-800 rounded-md flex gap-3 items-start"
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.8, delay: 0.7 }}
+          >
+            <Quote className="text-purple-400 mt-1" />
+            “Code with purpose. Build with vision. Solve with intelligence.”
+          </motion.blockquote>
+
+          {/* Info */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
+            <div className="flex items-start gap-3">
+              <BookOpen className="text-purple-600 mt-1" size={22} />
+              <div>
+                <h4 className="font-semibold text-gray-900">Education</h4>
+                <p>B.Tech – AI & Data Science</p>
               </div>
             </div>
-          </motion.div>
-
-          {/* Floating Emojis */}
-          <motion.div
-            className="absolute top-8 right-8 w-14 h-14 bg-purple-100 rounded-full flex items-center justify-center shadow"
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 2.5, repeat: Infinity }}
-          >
-            <span className="text-2xl">💡</span>
-          </motion.div>
-
-          <motion.div
-            className="absolute bottom-8 left-8 w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center shadow"
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2.5, repeat: Infinity }}
-          >
-            <span className="text-xl">👩‍💻</span>
-          </motion.div>
+            <div className="flex items-start gap-3">
+              <Globe className="text-purple-600 mt-1" size={22} />
+              <div>
+                <h4 className="font-semibold text-gray-900">Location</h4>
+                <p>Tiruvannamalai, Tamil Nadu, India</p>
+              </div>
+            </div>
+          </div>
         </div>
+
+        {/* Floating Emojis */}
+        <motion.div
+          className="absolute top-10 right-8 w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center shadow"
+          animate={{ y: [0, -10, 0] }}
+          transition={{ duration: 3, repeat: Infinity }}
+        >
+          <span className="text-xl">💡</span>
+        </motion.div>
+        <motion.div
+          className="absolute bottom-8 left-8 w-10 h-10 bg-pink-100 rounded-full flex items-center justify-center shadow"
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 3, repeat: Infinity }}
+        >
+          <span className="text-lg">👩‍💻</span>
+        </motion.div>
       </div>
     </section>
   );

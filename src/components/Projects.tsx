@@ -27,13 +27,13 @@ const Projects: React.FC = () => {
   return (
     <section id="projects" className="relative py-28 bg-gradient-to-br from-gray-100 via-white to-purple-100 overflow-hidden">
       <div className="absolute inset-0 overflow-hidden z-0">
-        {[...Array(12)].map((_, i) => (
+        {[...Array(20)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-4 h-4 bg-purple-200 rounded-full opacity-20 blur-sm"
+            className="absolute w-3 h-3 bg-purple-300 rounded-full opacity-30 blur-sm"
             style={{ top: `${Math.random() * 100}%`, left: `${Math.random() * 100}%` }}
-            animate={{ y: [0, -20, 0], opacity: [0.3, 0.6, 0.3] }}
-            transition={{ duration: 6 + Math.random() * 4, repeat: Infinity, ease: 'easeInOut', delay: Math.random() * 5 }}
+            animate={{ y: [0, -15, 0], opacity: [0.2, 0.6, 0.2], rotate: [0, 360] }}
+            transition={{ duration: 8 + Math.random() * 3, repeat: Infinity, ease: 'easeInOut', delay: Math.random() * 4 }}
           />
         ))}
       </div>
@@ -64,9 +64,8 @@ const Projects: React.FC = () => {
           />
         </motion.div>
 
-        {/* Card */}
         <motion.div
-          initial={{ opacity: 0, y: 50, rotateX: 5 }}
+          initial={{ opacity: 0, y: 50, rotateX: 10 }}
           animate={isInView ? { opacity: 1, y: 0, rotateX: 0 } : {}}
           transition={{ duration: 0.9 }}
           className="group bg-white rounded-3xl shadow-2xl hover:shadow-purple-300 hover:scale-[1.01] transition-transform duration-500 overflow-hidden"
@@ -98,12 +97,10 @@ const Projects: React.FC = () => {
             </motion.div>
           </div>
 
-          {/* Content */}
           <div className="p-8 md:p-12">
             <motion.h3 className="text-3xl font-bold text-gray-900 mb-4">AI-Powered Waste Classification</motion.h3>
             <motion.p className="text-lg text-gray-700 mb-8 leading-relaxed">
-              An intelligent system that classifies waste into recyclable, biodegradable, and non-biodegradable
-              using deep learning and real-time image classification. Built with TensorFlow & CV.
+              A smart AI-driven waste classifier that detects and sorts materials into recyclable, biodegradable, and non-biodegradable categories in real-time. Built using TensorFlow and image recognition models for sustainable cities.
             </motion.p>
 
             <div className="flex flex-wrap gap-3 mb-8">
@@ -120,7 +117,6 @@ const Projects: React.FC = () => {
               ))}
             </div>
 
-            {/* Accuracy bar */}
             <div className="mb-6">
               <p className="text-sm text-gray-600 mb-1">Model Accuracy</p>
               <div className="w-full bg-gray-200 rounded-full h-4">
@@ -156,7 +152,6 @@ const Projects: React.FC = () => {
           </div>
         </motion.div>
 
-        {/* Outro */}
         <motion.div
           className="text-center mt-20"
           initial={{ opacity: 0, y: 30 }}
@@ -164,13 +159,12 @@ const Projects: React.FC = () => {
           transition={{ delay: 0.7 }}
         >
           <p className="text-lg text-gray-700 max-w-3xl mx-auto font-medium">
-            🚀 This project demonstrates how technology and sustainability can go hand in hand.
-            More innovations await on my GitHub!
+            🚀 A vision of how AI can drive sustainability, automation, and smarter cities.
+            Check out more innovative builds on my GitHub!
           </p>
         </motion.div>
       </div>
 
-      {/* Modal */}
       {showModal && (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50">
           <div className="bg-white rounded-xl p-6 w-[90%] md:w-[600px] shadow-2xl relative">
